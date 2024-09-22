@@ -29,8 +29,6 @@ public class Bullet : MonoBehaviour
         
     }
 
-    //hello
-
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Enemy")) {
             GameObject asteroid1 = Instantiate(miniPrefab, collision.transform.position, Quaternion.identity);
