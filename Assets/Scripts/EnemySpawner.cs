@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
 
                 float rand = Random.Range(-xLimit, xLimit);
 
-                Vector3 spawnPosition = new Vector3(-3, 7f, -(1f));
+                Vector3 spawnPosition = new Vector3(rand, 7f, -(1f));
 
                 GameObject meteor = Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
 
