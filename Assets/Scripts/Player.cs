@@ -14,10 +14,8 @@ public class Player : MonoBehaviour
     public static double SCORE = 0;
     private Rigidbody _rigid;
 
-    private float xBorderLimit = 6;
+    private float xBorderLimit = 9;
     private float yBorderLimit = 6;
-    private GameObject GOScreen;
-    private GameObject PScreen;
 
     //public --> permite modificar valores desde unity
     //private --> no aparece directamente (es "invisible")
