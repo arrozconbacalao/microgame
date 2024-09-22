@@ -75,14 +75,19 @@ public class Player : MonoBehaviour
 
                 balaScript.targetVector = transform.right;
             }
-        } else {
+
+        }
+        else
+        {
             transform.position = finalPos;
         }
 
     }
 
-    private void OnTriggerEnter (Collider collider) {
-        if (collider.gameObject.CompareTag("Enemy") || collider.gameObject.CompareTag("EneMini")) {
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("Enemy") || collider.gameObject.CompareTag("EneMini"))
+        {
             SCORE = 0;
 
             goscreen.SetActive(true);
@@ -90,15 +95,14 @@ public class Player : MonoBehaviour
 
             GameObject go = GameObject.FindGameObjectWithTag("Score");
             RectTransform rt = go.GetComponent<Text>().GetComponent<RectTransform>();
-            //RectTransform rt = text.GetComponent<RectTransform>();
-            rt.localPosition = new Vector2(-7,-38);
-            rt.localScale = new Vector2(0.75f,0.75f);
+            rt.localPosition = new Vector2(-7, -38);
+            rt.localScale = new Vector2(0.75f, 0.75f);
         }
     }
 
-    public void RestartButton() {
+    public void RestartButton()
+    {
         //SceneManager.LoadScene necesita de un String con el nombre de la escena
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
- 

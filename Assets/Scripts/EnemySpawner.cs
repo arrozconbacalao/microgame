@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public GameObject asteroidPrefab,cam,goscreen;
+    public GameObject asteroidPrefab, cam, goscreen;
     public float spawnRatePerMinute = 30;
     public float spawnRateIncrement = 1f;
     public float xLimit;
@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -38,13 +38,17 @@ public class EnemySpawner : MonoBehaviour
 
                 Destroy(meteor, maxLifeTime);
             }
-        } else {
+        }
+        else
+        {
             GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] eneminiList = GameObject.FindGameObjectsWithTag("EneMini");
-            foreach (GameObject enemy in enemyList) {
+            foreach (GameObject enemy in enemyList)
+            {
                 Destroy(enemy);
             }
-            foreach(GameObject enemini in eneminiList) {
+            foreach (GameObject enemini in eneminiList)
+            {
                 Destroy(enemini);
             }
         }
