@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,14 +13,15 @@ public class Player : MonoBehaviour
     public float thrustForce = 100f;
     public float rotationSpeed = 120f;
 
-    public GameObject shooter, bulletPrefab, goscreen;
+    public GameObject shooter, bulletPrefab, back, goscreen, pscreen;
 
     public static double SCORE = 0;
     private Rigidbody _rigid;
 
     private float xBorderLimit = 6;
     private float yBorderLimit = 6;
-    private Vector3 finalPos;
+    private GameObject GOScreen;
+    private GameObject PScreen;
 
     //public --> permite modificar valores desde unity
     //private --> no aparece directamente (es "invisible")
@@ -27,15 +29,16 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        goscreen.SetActive(false);
+        back.SetActive(false);
         _rigid = GetComponent<Rigidbody>();
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (goscreen.activeSelf == false)
+        if (back.activeSelf == false)
         {
             var pos = transform.position;
 
@@ -76,10 +79,17 @@ public class Player : MonoBehaviour
                 balaScript.targetVector = transform.right;
             }
 
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                back.SetActive(true);
+                goscreen.SetActive(false);
+                pscreen.SetActive(true);
+            }
+
         }
         else
         {
-            transform.position = finalPos;
+            Time.timeScale = 0;
         }
 
     }
@@ -90,8 +100,9 @@ public class Player : MonoBehaviour
         {
             SCORE = 0;
 
+            back.SetActive(true);
+            pscreen.SetActive(false);
             goscreen.SetActive(true);
-            finalPos = transform.position;
 
             GameObject go = GameObject.FindGameObjectWithTag("Score");
             RectTransform rt = go.GetComponent<Text>().GetComponent<RectTransform>();
@@ -104,5 +115,10 @@ public class Player : MonoBehaviour
     {
         //SceneManager.LoadScene necesita de un String con el nombre de la escena
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ResumeButton() {
+        back.SetActive(false);
+        Time.timeScale = 1;
     }
 }

@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
         GameObject[] go = GameObject.FindGameObjectsWithTag("EneMini");
         foreach (GameObject enemini in go)
         {
-            Destroy(enemini, maxLifeTime);
+            Destroy(enemini, maxLifeTime-1);
         }
 
     }
@@ -54,6 +54,7 @@ public class Bullet : MonoBehaviour
         var x = Math.Abs(transform.position.x);
         var y = Math.Abs(transform.position.y);
 
+        //detruir solo los asteroides dentro de la pantalla
         if (x < 7 || y < 6)
         {
             if (a == 0)

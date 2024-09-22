@@ -39,19 +39,6 @@ public class EnemySpawner : MonoBehaviour
                 Destroy(meteor, maxLifeTime);
             }
         }
-        else
-        {
-            GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject[] eneminiList = GameObject.FindGameObjectsWithTag("EneMini");
-            foreach (GameObject enemy in enemyList)
-            {
-                Destroy(enemy);
-            }
-            foreach (GameObject enemini in eneminiList)
-            {
-                Destroy(enemini);
-            }
-        }
 
     }
 }

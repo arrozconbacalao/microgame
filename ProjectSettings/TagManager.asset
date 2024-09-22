@@ -8,6 +8,7 @@ TagManager:
   - UI
   - EneMini
   - Score
+  - GOText
   layers:
   - Default
   - TransparentFX
